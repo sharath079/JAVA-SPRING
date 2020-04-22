@@ -1,9 +1,11 @@
 package kun.service;
 
+import java.util.List;
+
 import kun.bo.UserBO;
 
 public interface SearchService {
 	
-	public UserBO result(String username,String licenseNo,String plateNo) throws Exception;
+	public List<UserBO> result(String username,String licenseNo,String plateNo) throws Exception;
 
 }

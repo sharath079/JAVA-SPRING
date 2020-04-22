@@ -48,7 +48,7 @@ public class SearchDAOIMPL implements SearchDAO {
 		
 		// get datasource connection
 		con=hkds.getConnection();
-		System.out.println("connected...."+hkds.getClass());
+		//System.out.println("connected...."+hkds.getClass());
 		ps=con.prepareStatement(sqlQuery);
 		ps.setString(1, name1);
 		ps.setString(2, license1);

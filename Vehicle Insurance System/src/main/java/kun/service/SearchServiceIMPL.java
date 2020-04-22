@@ -1,5 +1,8 @@
 package kun.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,17 +20,18 @@ public class SearchServiceIMPL implements SearchService {
 	SearchDAO sdao;
 	
 	@Override
-	public UserBO result(String username, String licenseNo, String plateNo) throws Exception {
+	public List<UserBO> result(String username, String licenseNo, String plateNo) throws Exception {
 		
 		SearchBO sbo=new SearchBO();
 		sbo.setUsername(username);
 		sbo.setLicenseno(licenseNo);
 		sbo.setPlateno(plateNo);
+		List<UserBO> list_ubo=new ArrayList<UserBO>();
 		
 		System.out.println("::"+sbo);
 		//use seacrhdao obj
 		
-		sdao=new SearchDAOIMPL();
-		return ubo;
+		list_ubo=sdao.resultTest(username, licenseNo, plateNo);
+		return list_ubo;
 	}
 }

@@ -37,7 +37,7 @@ public class ClientTest {
 		List<UserBO> list=new ArrayList<UserBO>();
 		ctx= new AnnotationConfigApplicationContext(AppConfig.class);
 		
-		sdao=ctx.getBean("searchDAO",SearchDAOIMPL.class);
+		sService=ctx.getBean("searchService",SearchServiceIMPL.class);
 		
 		try {
 				
@@ -45,7 +45,7 @@ public class ClientTest {
         //System.out.println("::"+msg);
 			
 			//ubo=sService.result("satish", "LIC111","TSO9BN4567");
-			list=sdao.resultTest("Satish","LIC111","TS09BN4567");
+			list=sService.result("Satish","LIC111","TS09BN4567");
 						
 			System.out.println("Search results..."+list);
 			} 
@@ -56,5 +56,4 @@ public class ClientTest {
 
 		((AbstractApplicationContext) ctx).close();
 	}
-
 }
