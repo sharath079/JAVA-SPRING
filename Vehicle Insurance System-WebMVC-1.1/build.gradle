@@ -19,6 +19,18 @@ repositories {
 }
 
 dependencies {
+// https://mvnrepository.com/artifact/org.springframework/spring-webmvc
+compile group: 'org.springframework', name: 'spring-webmvc', version: '5.2.4.RELEASE'
+
+// https://mvnrepository.com/artifact/javax.servlet/jstl
+compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+
+// https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl
+compile group: 'org.apache.taglibs', name: 'taglibs-standard-impl', version: '1.2.5'
+
+// https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
+compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+
              // https://mvnrepository.com/artifact/org.springframework/spring-core
 compile group: 'org.springframework', name: 'spring-core', version: '5.2.2.RELEASE'
 
@@ -34,5 +46,6 @@ compile group: 'org.springframework', name: 'spring-aspects', version: '5.2.2.RE
 // https://mvnrepository.com/artifact/com.zaxxer/HikariCP
 compile group: 'com.zaxxer', name: 'HikariCP', version: '3.4.2'
 
+// https://mvnrepository.com/artifact/org.projectlombok/lombok
+compile group: 'org.projectlombok', name: 'lombok', version: '1.18.12'
 }
-mainClassName="kun.test.ClientTest";
