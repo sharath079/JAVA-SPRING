@@ -5,7 +5,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.AbstractApplicationContext;
 
 import kun.config.AppConfig;
-import kun.dto.UserDTO;
 import kun.service.InsuranceService;
 import kun.service.InsuranceServiceIMPL;
 import kun.service.UserService;
@@ -31,9 +30,8 @@ public class InsertTest {
 		
 		try {
 			
-		UserDTO userdto = null;
 		// call service method insert		
-		service.insert(userdto);
+		//service.insert(7, "Verma", "verma1234", "male", "Indian", "LIC666", 2);
 		// setting insurance details
 		
 		//insService.InsInsert(2007, "TATA-AIG", "INS-AIG-05", "3-YEARS", 7);

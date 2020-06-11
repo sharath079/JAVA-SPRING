@@ -29,7 +29,6 @@ public class ClientTest {
 		SearchService sService;
 		SearchDAO sdao;
 		UserBO ubo;
-		SearchDTO sdto = null;
 		
 		List<UserBO> list=new ArrayList<UserBO>();
 		ctx= new AnnotationConfigApplicationContext(AppConfig.class);
@@ -38,10 +37,8 @@ public class ClientTest {
 		
 		try {
 			
+			SearchDTO sdto = null;
 			sdto=new SearchDTO();
-			sdto.setLicenseno("LIC888");
-			sdto.setPlateno("TS10BN8888");
-			sdto.setUsername("Gopal");
 			//ubo=sService.result("satish", "LIC111","TSO9BN4567");
 			list=sService.result(sdto);
 						

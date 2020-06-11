@@ -6,9 +6,20 @@
  * User Manual available at https://docs.gradle.org/6.2.1/userguide/java_library_plugin.html
  */
 
+
+
 plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'application'
+    id 'java'
+    id 'eclipse'
+}
+
+
+apply plugin: "war"
+war {
+    baseName = 'SpringMVC-ABS'
+    version = '6.2.1-BUILD-SNAPSHOT'
 }
 
 repositories {
@@ -40,5 +51,5 @@ compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
 // https://mvnrepository.com/artifact/com.zaxxer/HikariCP
 compile group: 'com.zaxxer', name: 'HikariCP', version: '3.4.2'
 
-   
 }
+mainClassName="SpringMVC-MiniProj1-ABS";

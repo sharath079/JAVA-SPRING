@@ -1,6 +1,6 @@
 arguments=
 auto.sync=true
-build.scans.enabled=false
+build.scans.enabled=true
 connection.gradle.distribution=GRADLE_DISTRIBUTION(VERSION(6.2.1))
 connection.project.dir=
 eclipse.preferences.version=1

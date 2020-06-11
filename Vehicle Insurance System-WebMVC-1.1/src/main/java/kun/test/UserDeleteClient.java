@@ -7,10 +7,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 
-import kun.bo.ByNameBO;
 import kun.bo.UserBO;
 import kun.config.AppConfig;
-import kun.dto.ByNameDTO;
 import kun.service.UserService;
 import kun.service.UserServiceIMPL;
 
@@ -28,14 +26,13 @@ public class UserDeleteClient {
 		
 		try {
 			// delete User based on ID
-			//boolean count=service.delete(7);
-			//System.out.println(count);
+			boolean count=service.delete(7);
+			System.out.println(count);
 			
 			//retrieve user by name
-			ByNameDTO ndto=new ByNameDTO();
-			ndto.setName("Gopal");
-			listbo=service.retrievalByUserName(ndto);
-			System.out.println("List of Users ::"+listbo);
+			
+			//listbo=service.retrievalByUserName("Satish");
+			//System.out.println("List of Users ::"+listbo);
 		}
          catch(Exception e) {
         	 e.printStackTrace();
