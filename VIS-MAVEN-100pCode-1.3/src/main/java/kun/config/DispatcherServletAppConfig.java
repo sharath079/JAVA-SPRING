@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @ComponentScan(basePackages = "kun")
 @EnableWebMvc
 public class DispatcherServletAppConfig {
-
+	
 	@Bean
 	public InternalResourceViewResolver createResolver() {
 		
@@ -35,4 +35,5 @@ public class DispatcherServletAppConfig {
 		
 		return rbms;
 	}
+
 }

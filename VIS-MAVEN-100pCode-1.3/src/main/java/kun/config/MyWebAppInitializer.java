@@ -13,39 +13,39 @@ public class MyWebAppInitializer implements WebApplicationInitializer {
 
 	@Override
 	public void onStartup(ServletContext sc) throws ServletException {
-	
-	AnnotationConfigWebApplicationContext parentCtx=null;
-	AnnotationConfigWebApplicationContext childCtx=null;
-	ContextLoaderListener listener=null;
-	
-	DispatcherServlet ds=null;
-	ServletRegistration.Dynamic dynamic=null;
-	
-	//parent container
-	
-	parentCtx=new AnnotationConfigWebApplicationContext();
-	parentCtx.register(AppConfig.class);
-	
-	// create listener and register "parent conatiner"
-	listener=new ContextLoaderListener(parentCtx);
-	// register listener with Servlet Context
-	sc.addListener(listener);
-	
-	// child container
-	
-	childCtx=new AnnotationConfigWebApplicationContext();
-	childCtx.register(DispatcherServletAppConfig.class);
-	
-	// create dispatcher servlet obj
-	ds=new DispatcherServlet(childCtx);
-	
-	//register dispatcher servlet
-	//Register ServletRegistartion.Dynamic with ServletContext
-	
-	dynamic=sc.addServlet("dynamic", ds);
-	dynamic.setLoadOnStartup(2);
-	dynamic.addMapping("*.htm");
 		
+		AnnotationConfigWebApplicationContext parentCtx=null;
+		AnnotationConfigWebApplicationContext childCtx=null;
+		ContextLoaderListener listener=null;
+		
+		DispatcherServlet ds=null;
+		ServletRegistration.Dynamic dynamic=null;
+		
+		//parent container
+		
+		parentCtx=new AnnotationConfigWebApplicationContext();
+		parentCtx.register(AppConfig.class);
+		
+		// create listener and register "parent conatiner"
+		listener=new ContextLoaderListener(parentCtx);
+		// register listener with Servlet Context
+		sc.addListener(listener);
+		
+		// child container
+		
+		childCtx=new AnnotationConfigWebApplicationContext();
+		childCtx.register(DispatcherServletAppConfig.class);
+		
+		// create dispatcher servlet obj
+		ds=new DispatcherServlet(childCtx);
+		
+		//register dispatcher servlet
+		//Register ServletRegistartion.Dynamic with ServletContext
+		
+		dynamic=sc.addServlet("dynamic", ds);
+		dynamic.setLoadOnStartup(2);
+		dynamic.addMapping("*.htm");
+
 	}
 
 }
