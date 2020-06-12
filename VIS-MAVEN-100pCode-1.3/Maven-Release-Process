@@ -1,0 +1,136 @@
+1) Ready with Project.
+2) Add the "project" to GIT-->rt.click-->Team-->share project-->select git repository.
+3) "Commit and Push" changes to GIT from "GitStaging" TAB.
+4) IN pom.xml add below Configurations
+
+Under <properties> tag add
+===========================
+<properties>
+<project.scm.id>github</project.scm.id>
+</properties>
+
+
+<!-- Configure SCM -->
+<scm>
+    <developerConnection>scm:git:https://github.com/sharath079/MAVEN.git</developerConnection>
+    <url>https://github.com/sharath079/MAVEN</url>
+    <tag>Project</tag>
+</scm>
+
+Under <plugins> tag add
+========================
+<!-- Configure Maven-Release Plugin -->
+        <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-release-plugin</artifactId>
+              <version>2.5.3</version>
+        </plugin>
+
+Under <build> tag add for "PackageCloud" Repo
+=============================================
+
+<build>
+    <extensions>
+            <extension>
+                <groupId>io.packagecloud.maven.wagon</groupId>
+                <artifactId>maven-packagecloud-wagon</artifactId>
+                <version>0.0.6</version>
+            </extension>
+        </extensions>
+<build>        
+
+Create Profiles for PackageCloud and github under <project> tag
+===============================================================
+
+---> We can Configure both "SNAPSHOT" and "release" repo for PackageCoud, set profile to active by default
+using <activeByDefault>true</activeByDsefault>
+
+---> Configure "Github" url where u need to perform Release operation.
+
+<project>
+
+<profiles>
+      <profile>
+          <id>packagecloud</id>
+          <distributionManagement>
+        <repository>
+            <id>packagecloud.release</id>
+            <url>packagecloud+https://packagecloud.io/sharath079/release</url>
+        </repository>
+        <snapshotRepository>
+            <id>packagecloud.snapshot</id>
+            <url>packagecloud+https://packagecloud.io/sharath079/snapshot</url>
+        </snapshotRepository>
+    </distributionManagement>
+    <activation>
+           <activeByDefault>true</activeByDefault>
+    </activation>
+      </profile>
+      <profile>
+              <id>github</id>
+              <distributionManagement>
+                         <repository>
+                               <id>github</id>
+                               <url>https://github.com/sharath079/MAVEN</url>
+                         </repository>
+              </distributionManagement>     
+      </profile>
+  </profiles>
+</project>  
+
+
+Under Maven-localrepo (.m2) Folder
+==================================
+
+--> create "settings.xml" file.
+
+Inside "settings.xml" 
+
+Configure Server Authentication details for PackageCloud and GitHub
+====================================================================
+ <servers>
+	  <server>
+         <id>packagecloud.release</id>
+         <password>938b5e3e3db16441dd00441101e129689bab0d8711a9da76</password>
+      </server>
+      <server>
+          <id>packagecloud.snapshot</id>
+          <password>938b5e3e3db16441dd00441101e129689bab0d8711a9da76</password>
+	   </server>
+	   <!--  Github Authentication Details for SCM Config Project- "MavenReleasePlugin"  -->
+	   <server>
+		   <id>github</id>
+			   <username>sharath079</username>
+               <password>sharath8125541571</password>	
+       </server>
+	   </servers>
+
+mvn release:prepare
+===================
+
+---> Finally perform "package" goal once.On succesfull Build perform "Commit and Push" operation
+     on GIT.
+---> Open Command Prompt (cmd)--> Go To Project Folder "C:\Users\SharathChandra\git\JAVA-SPRING\VIS-MAVEN-100pCode-1.3"   
+	 Now cmd to point to Project folder which is inside your local "git" repo not eclipse workspace project.
+
+---> From the Project Folder First execute "mvn release:prepare" goal.
+     while Exection it prompts.......
+     
+     What is the release version of the "project": 1.1.RELEASE(same will be released to both github and packagecloud)
+     what is the scm release tag ot label for "Project" : Default or any TAG that will shown in github "Tags" branch.
+     What is the new developement version of the "Project" : 1.1-SNAPSHOT (after performing release your project version will 
+                                                                           automatically changed to this *-SNAPSHOT version.)
+                                                                           
+---> Press "Enter" to continue execution.
+---> After sometime your Buid will be Success.
+
+mvn release:perform
+===================
+
+---> After successfull "release:prepare" now project is ready to release, we can see temp file i.e .properties files etc.
+---> Now execute "mvn release:perform" goal to release the project to "packageCloud" and "GitHub".
+---> After several (around 5 min) if there are no errors your build will be successfull.
+---> Finally, we can check that our project is deployed to "PackageCloud.release" repo
+     and onto "GitHub" under "Tags" branch and "release" tag.
+       	   
+  
