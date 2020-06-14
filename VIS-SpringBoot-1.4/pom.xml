@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>kun</groupId>
 	<artifactId>VIS-SpringBoot-1.4</artifactId>
-	<version>1.5.RELEASE</version>
+	<version>1.5-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>VIS-SpringBoot-1.4</name>
 	<description>Demo project for Spring Boot</description>
