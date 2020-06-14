@@ -11,7 +11,7 @@
 	<artifactId>VIS-SpringBoot-1.4</artifactId>
 	<version>1.5-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>VIS-SpringBoot-1.4</name>
+	<name>VIS-SpringBoot</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
