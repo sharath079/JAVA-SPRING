@@ -10,9 +10,9 @@ import kun.service.VehicleServiceIMPL;
 public class VehicleDeleteClient {
 
 	
-	public static void main(String[] args) {
-		
-	}
+//	public static void main(String[] args) {
+//		
+//	}
 
 	public VehicleService service() {
 		ApplicationContext ctx;
