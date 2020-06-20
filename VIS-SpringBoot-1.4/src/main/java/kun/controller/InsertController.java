@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import kun.command.AdminCommand;
 import kun.command.DeleteCommand;
 import kun.command.InsuranceCommand;
 import kun.command.UserCommand;
@@ -27,7 +29,7 @@ import kun.validation.UserRegValidation;
 import kun.validation.VehRegValidation;
 
 @Controller
-@SessionAttributes("{UserCmd,InsCmd,VehCmd,DelCmd}")
+@SessionAttributes("{UserCmd,InsCmd,VehCmd,DelCmd,adminCmd}")
 public class InsertController {
 	
 	@Autowired
@@ -72,11 +74,46 @@ public class InsertController {
 		return new DeleteCommand();
 	}
 	
+	@ModelAttribute("adminCmd")
+	public AdminCommand  getAdminCommand() {
+		System.out.println("getAdminCommand()");
+		return new AdminCommand();
+	}
+	
 	@RequestMapping("/homepage.htm")
 	public String Home() {
-		return "home";
+		return "home1";
 	}
     
+	@GetMapping("/admin.htm")
+	public String AdminHome(HttpSession ses,@ModelAttribute("adminCmd") AdminCommand aCmd) {
+		return "adminLogin";
+	}
+	
+	@PostMapping("/admin.htm")
+	public String AdminOperations(HttpSession ses,@ModelAttribute("adminCmd") AdminCommand aCmd) 
+	{
+	    String name=aCmd.getName();
+	    String password=aCmd.getPassword();
+	    
+	    if(name.equalsIgnoreCase("nataraz")&& password.equalsIgnoreCase("spring"))
+		return "adminHome";
+	    else
+	    	System.out.println("Invalid Credentails...");
+	    	return "adminLogin";
+	}
+	
+	@GetMapping("/user.htm")
+	public String UserHome(HttpSession ses)
+	{
+		return "userLogin";
+	}
+	
+	@PostMapping("/user.htm")
+	public String UserOperations() {
+		return "userHome";
+	}
+	
 	@GetMapping("/registration.htm")        //Initial Phase
 	public String Home(@ModelAttribute("UserCmd") UserCommand uCmd) {
 		
