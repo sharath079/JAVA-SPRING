@@ -31,7 +31,7 @@
 		<dependency>
 			<groupId>com.oracle.ojdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
-			<scope>runtime</scope>
+			<scope>provided</scope>
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.webjars/bootstrap -->
@@ -46,29 +46,25 @@
 <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-jdbc</artifactId>
-    <version>5.2.4.RELEASE</version>
 </dependency>
 
 <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 <dependency>
     <groupId>org.projectlombok</groupId>
     <artifactId>lombok</artifactId>
-    <version>1.18.12</version>
-    <scope>provided</scope>
+    <scope>provided</scope>    
 </dependency>
 
 <!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
 <dependency>
     <groupId>com.zaxxer</groupId>
     <artifactId>HikariCP</artifactId>
-    <version>3.4.2</version>
 </dependency>
 
 <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
 <dependency>
     <groupId>javax.servlet</groupId>
     <artifactId>jstl</artifactId>
-    <version>1.2</version>
 </dependency>
 
 <!-- https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl -->
